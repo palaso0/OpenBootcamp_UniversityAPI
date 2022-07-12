@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{DB64C72D-C4DE-4C2B-8775-02E18F860D36}|Default">
+  <MonoDevelop.Ide.ItemProperties.2.University__API__Backend PreferredExecutionTarget="/Applications/Opera.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="2.University_API_Backend/DataAccess/UniversotyDBContext.cs">
+    <Files>
+      <File FileName="2.University_API_Backend/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="2.University_API_Backend/appsettings.json" Line="5" Column="23" />
+      <File FileName="2.University_API_Backend/Program.cs" Line="13" Column="1" />
+      <File FileName="2.University_API_Backend/DataAccess/UniversotyDBContext.cs" Line="16" Column="1" />
+      <File FileName="2.University_API_Backend/Models/DataModels/BaseEntity.cs" Line="18" Column="58" />
+      <File FileName="2.University_API_Backend/Models/DataModels/User.cs" Line="20" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="University" expanded="True">
+            <Node name="2.University_API_Backend" expanded="True">
+              <Node name="DataAccess" expanded="True">
+                <Node name="UniversotyDBContext.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True">
+                <Node name="DataModels" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>
