@@ -11,10 +11,13 @@ namespace _2.University_API_Backend.DataAccess
 
         }
 
-        //TODO: Add DBSets (tables of our Data base)
+        // Add DBSets (tables of our Data base)
         public DbSet<User>? Users { get; set; }
         public DbSet<Curso>? Cursos { get; set; }
-
+        public DbSet<Course>? Courses { get; set; }
+        public DbSet<Category>? Categories { get; set; }
+        public DbSet<Student>? Students { get; set; }
+        public DbSet<Chapter>? Chapters{ get; set; }
     }
 }
 

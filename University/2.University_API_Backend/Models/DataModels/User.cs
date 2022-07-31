@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace _2.University_API_Backend.Models.DataModels
 {
     public class User: BaseEntity
