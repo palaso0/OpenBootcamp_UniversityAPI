@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using _2.University_API_Backend.DataAccess;
 using _2.University_API_Backend.Models.DataModels;
+using _2.University_API_Backend.Services;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using _2.University_API_Backend.Properties;
@@ -16,16 +18,24 @@ namespace _2.University_API_Backend.Controllers
     public class ChaptersController : ControllerBase
     {
         private readonly UniversityDBContext _context;
+        private readonly ChapterService _chapterService;
 
-        public ChaptersController(UniversityDBContext context)
+        public ChaptersController(UniversityDBContext context, ChapterService chapterService)
         {
             _context = context;
+            _chapterService = chapterService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Chapter>>> GetChapters()
         {
             return await _context.Chapters.ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Chapter>> GetChapterByCourseId(int courseId)
+        {
+           return await Task.FromResult(_chapterService.GetChaptersByCourseId(courseId));
         }
 
         [HttpGet("{id}")]

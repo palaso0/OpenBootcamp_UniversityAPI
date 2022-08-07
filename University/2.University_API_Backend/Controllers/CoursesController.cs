@@ -1,8 +1,10 @@
-﻿using System;
+﻿using System.Security.Principal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using _2.University_API_Backend.DataAccess;
+using _2.University_API_Backend.Services;
 using _2.University_API_Backend.Models.DataModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +17,12 @@ namespace _2.University_API_Backend.Controllers
     public class CoursesController : ControllerBase
     {
         private readonly UniversityDBContext _context;
+        private readonly CoursesService _coursesService; 
 
-        public CoursesController(UniversityDBContext context)
+        public CoursesController(UniversityDBContext context, CoursesService coursesService)
         {
             _context = context;
+            _coursesService = coursesService;
         }
 
 
@@ -26,6 +30,23 @@ namespace _2.University_API_Backend.Controllers
         public async Task<ActionResult<IEnumerable<Course>>> getCourses()
         {
             return await _context.Courses.ToListAsync();
+        }
+
+        [HttpGet("{categoryId}")]
+        public async Task<ActionResult<IEnumerable<Course>>> getCoursesByCategoryId(int categoryId)
+        {
+            return await Task.FromResult(_coursesService.GetCoursesByCategory(categoryId).ToList());
+        }
+        [HttpGet("{studentId}")]
+        public async Task<ActionResult<IEnumerable<Course>>> getCoursesByStudentId(int studentId)
+        {
+            return await Task.FromResult(_coursesService.GetCoursesFromStudentId(studentId).ToList());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Course>>> GetCoursesWithoutTemarios()
+        {
+            return await Task.FromResult(_coursesService.GetCoursesWithoutTemarios().ToList());
         }
 
         [HttpGet("{id}")]

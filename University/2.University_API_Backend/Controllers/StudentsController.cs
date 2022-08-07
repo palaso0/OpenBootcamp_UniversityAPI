@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using _2.University_API_Backend.DataAccess;
 using _2.University_API_Backend.Models.DataModels;
+using _2.University_API_Backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,10 +18,13 @@ namespace _2.University_API_Backend.Controllers
     public class StudentControllers : ControllerBase
     {
         private readonly UniversityDBContext _context;
+        //Service
+        private readonly IStudentsService _studensService;
 
-        public StudentControllers(UniversityDBContext context)
+        public StudentControllers(UniversityDBContext context, IStudentsService studentsService)
         {
             _context = context;
+            _studensService = studentsService;
         }
 
         [HttpGet]
@@ -28,11 +32,22 @@ namespace _2.University_API_Backend.Controllers
         {
             return await _context.Students.ToListAsync();
         }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Student>>> getStudentsWithNoCourses()
+        {
+            return await Task.FromResult(_studensService.GetStudentsWithNoCourses().ToList());
+        }
+        [HttpGet("{courseId}")]
+        public async Task<ActionResult<IEnumerable<Student>>> getStudentByCourseId(int courseId)
+        {
+            return await Task.FromResult(_studensService.GetStudentsByCourseId(courseId).ToList());
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> getStudent(int id)
         {
             var student = await _context.Students.FindAsync(id);
+            
             if(student == null)
             {
                 return NotFound();
